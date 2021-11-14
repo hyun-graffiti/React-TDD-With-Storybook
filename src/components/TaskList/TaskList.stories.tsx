@@ -1,4 +1,4 @@
-import TaskList, { TaskListProps } from './TaskList'
+import TaskList, { TaskListProps } from '.'
 import { css } from '@emotion/react'
 import { PartialStoryFn } from '@storybook/addons'
 

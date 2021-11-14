@@ -1,4 +1,4 @@
-import Task, { TaskProps } from './Task'
+import Task, { TaskProps } from '.'
 import { css } from '@emotion/react'
 import { PartialStoryFn } from '@storybook/addons'
 

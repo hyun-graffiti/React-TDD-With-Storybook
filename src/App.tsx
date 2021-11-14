@@ -1,13 +1,11 @@
 import { css, Global } from '@emotion/react'
-import TaskForm from './components/TaskForm'
+import TaskApp from './components/TaskApp'
 
 export default function App() {
-  const onInsert = (value: string) => console.log(value)
-
   return (
     <div css={wrapper}>
       <Global styles={GlobalStyle} />
-      <TaskForm onInsert={onInsert} />
+      <TaskApp />
     </div>
   )
 }
@@ -27,6 +25,8 @@ export const GlobalStyle = css`
   #root {
     height: 100%;
     background: #26c6da;
+    display: grid;
+    place-items: center;
   }
 `
 

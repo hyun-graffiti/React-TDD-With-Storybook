@@ -1,8 +1,9 @@
 import { render, fireEvent } from '@testing-library/react'
-import TaskList, { TaskListProps } from './TaskList'
+import TaskList from '.'
+import { TaskType } from '../Task'
 
 describe('<TaskList />', () => {
-  const sampleTaskList: TaskListProps['taskList'] = [
+  const sampleTaskList: TaskType[] = [
     {
       id: 1,
       text: 'TDD 배우기',
@@ -17,7 +18,7 @@ describe('<TaskList />', () => {
     },
   ]
 
-  const setupTest = (taskList?: TaskListProps['taskList']) => {
+  const setupTest = (taskList?: TaskType[]) => {
     const onToggle = jest.fn()
     const onPinned = jest.fn()
     const onRemove = jest.fn()

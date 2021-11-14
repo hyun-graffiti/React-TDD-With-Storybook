@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react'
-import Task, { TaskProps } from './Task'
+import Task, { TaskProps } from '.'
 
 describe('<Task />', () => {
   const sampleTask: TaskProps['task'] = {
@@ -31,6 +31,7 @@ describe('<Task />', () => {
 
     return {
       ...utils,
+      getByRole,
       text,
       pinButton,
       removeButton,
@@ -58,13 +59,23 @@ describe('<Task />', () => {
     expect(getComputedStyle(text).textDecoration).not.toBe('line-through')
   })
 
+  it('show Filled Pin Button when pinned is true', () => {
+    const { getByRole } = setupTest({ ...sampleTask, pinned: true })
+    expect(getByRole('pinned')).toBeTruthy()
+  })
+
+  it('show Outlined Pin Button when pinned is false', () => {
+    const { getByRole } = setupTest({ ...sampleTask })
+    expect(getByRole('notPinned')).toBeTruthy()
+  })
+
   it('calls onToggle', () => {
     const { text, onToggle } = setupTest(sampleTask)
     fireEvent.click(text)
     expect(onToggle).toBeCalledWith(sampleTask.id)
   })
 
-  it('calls onFinned', () => {
+  it('calls onPinned', () => {
     const { pinButton, onPinned } = setupTest(sampleTask)
     fireEvent.click(pinButton)
     expect(onPinned).toBeCalledWith(sampleTask.id)

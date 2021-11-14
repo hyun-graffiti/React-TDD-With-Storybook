@@ -33,7 +33,11 @@ export default function Task({
       </div>
       <div css={taskFuncWrapper}>
         <div onClick={handlePinned} css={taskFuncIcon} role="pin">
-          {pinned ? <AiFillStar /> : <AiOutlineStar />}
+          {pinned ? (
+            <AiFillStar role="pinned" />
+          ) : (
+            <AiOutlineStar role="notPinned" />
+          )}
         </div>
         <div onClick={handleRemove} css={taskFuncIcon} role="remove">
           <AiOutlineCloseCircle />
