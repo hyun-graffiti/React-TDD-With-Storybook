@@ -14,7 +14,7 @@ export default {
 
 export function TaskFormStory() {
   const initialProps: TaskProps = {
-    todo: {
+    task: {
       id: 1,
       text: 'TDD 배우기',
       done: true,

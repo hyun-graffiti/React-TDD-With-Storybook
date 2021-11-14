@@ -2,20 +2,22 @@ import { useCallback } from 'react'
 import { css } from '@emotion/react'
 import { AiFillStar, AiOutlineStar, AiOutlineCloseCircle } from 'react-icons/ai'
 
+export type TaskType = {
+  id: number
+  text: string
+  done: boolean
+  pinned: boolean
+}
+
 export type TaskProps = {
-  todo: {
-    id: number
-    text: string
-    done: boolean
-    pinned: boolean
-  }
+  task: TaskType
   onToggle: (id: number) => void
   onPinned: (id: number) => void
   onRemove: (id: number) => void
 }
 
 export default function Task({
-  todo: { id, text, done, pinned },
+  task: { id, text, done, pinned },
   onToggle,
   onPinned,
   onRemove,
@@ -47,10 +49,15 @@ const taskWrapper = css`
   align-items: center;
   padding: 10px 20px;
   background: #ffffff;
+
+  & + & {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+  }
 `
 
 const taskText = (done: boolean) => css`
   text-decoration: ${done ? 'line-through' : 'none'};
+  cursor: pointer;
 `
 
 const taskFuncWrapper = css`
